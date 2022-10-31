@@ -10,13 +10,12 @@ let cacheDb = null
 
 export default async function connectDb() {
   if(cacheDb) {
-    console.log("cache")
     return cacheDb
   }
 
   try {
     await client.connect();
-    const db = client.db("foodManagerChallenger").collection("teste");
+    const db = client.db("foodManagerChallenger")
     cacheDb = db
   
     return db
