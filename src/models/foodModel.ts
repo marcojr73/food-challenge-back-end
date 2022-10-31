@@ -1,27 +1,27 @@
 export default class Food {
-    code: Number
-    status: String
+    code: number
+    status: string
     imported_t: Date
-    url: String
-    creator: String
-    created_t: String
-    last_modified_t: String
-    product_name: String
-    quantity: String
-    brands: String
-    categories: String
-    labels: String
-    cities: String
-    purchase_places: String
-    stores: String
-    ingredients_text: String
-    traces: String
-    serving_size: String
-    serving_quantity: Number
-    nutriscore_score: Number
-    nutriscore_grade: String
-    main_category: String
-    image_url: String
+    url: string
+    creator: string
+    created_t: string
+    last_modified_t: string
+    product_name: string
+    quantity: string
+    brands: string
+    categories: string
+    labels: string
+    cities: string
+    purchase_places: string
+    stores: string
+    ingredients_text: string
+    traces: string
+    serving_size: string
+    serving_quantity: number
+    nutriscore_score: number
+    nutriscore_grade: string
+    main_category: string
+    image_url: string
 
     constructor(code, status, imported_t, url, creator, created_t, last_modified_t, product_name, quantity, brands, categories, labels, cities, purchase_places, stores, ingredients_text, traces, serving_size, serving_quantity, nutriscore_score, nutriscore_grade, main_category, image_url) {
         this.code = code,
