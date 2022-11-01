@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "tsc && node dist/config/seed.js",
-    "dev": "nodemon src/server.ts"
+    "seed": "node cron/seed.ts",
+    "dev": "nodemon src/server.ts",
+    "start": "tsc && node dist/src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "line-reader": "^0.4.0",
     "mongodb": "^4.11.0",
     "ndjson": "^2.0.0",
+    "node-cron": "^3.0.2",
     "nodemon": "^2.0.20",
     "parse-json-stream": "^2.4.0",
     "stream-json": "^1.7.4",
