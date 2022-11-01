@@ -14,8 +14,14 @@ async function updateStatusToTrash(code: string){
     return await db.collection("foods").updateOne({code}, {$set: {status: "trash"}})
 }
 
+async function getProductByCode(code: string){
+    const db = await connectDb()
+    return await db.collection("foods").findOne({code})
+}
+
 export {
     connectToDb,
     getLastTimeUpdateDb,
-    updateStatusToTrash
+    updateStatusToTrash,
+    getProductByCode
 }

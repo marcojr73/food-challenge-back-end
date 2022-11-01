@@ -11,14 +11,23 @@ async function apiDetails(req: Request, res: Response){
 }
 
 async function productUpdate(req: Request, res: Response){
-    
+
     const {code} = req.params
     await services.callUpdateDbStatus(code)
 
     res.status(200).send("success when updating product")
 }
 
+async function getProductInfo(req: Request, res: Response){
+
+    const {code} = req.params
+    const product = await services.callGetProduct(code)
+
+    res.status(200).send({product})
+}
+
 export {
     apiDetails, 
-    productUpdate
+    productUpdate,
+    getProductInfo
 }
