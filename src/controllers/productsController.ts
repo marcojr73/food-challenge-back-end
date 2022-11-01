@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import Food from "../models/foodModel.js"
 import * as services from "../services/productsServices.js"
 
 async function apiDetails(req: Request, res: Response){
@@ -10,12 +11,21 @@ async function apiDetails(req: Request, res: Response){
     res.send({connectionDb, lastUpate, performance})
 }
 
-async function productUpdate(req: Request, res: Response){
+async function updateProduct(req: Request, res: Response){
+    
+    const {code} = req.params
+    const updatedVersion: Food = req.body
+    await services.callUpdateProductDb(code, updatedVersion)
+
+    res.status(200).send("success when to update product")
+}
+
+async function toTrashProduct(req: Request, res: Response){
 
     const {code} = req.params
     await services.callUpdateDbStatus(code)
 
-    res.status(200).send("success when updating product")
+    res.status(200).send("success when to trash product")
 }
 
 async function getProductInfo(req: Request, res: Response){
@@ -28,6 +38,7 @@ async function getProductInfo(req: Request, res: Response){
 
 export {
     apiDetails, 
-    productUpdate,
+    updateProduct,
+    toTrashProduct,
     getProductInfo
 }

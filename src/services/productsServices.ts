@@ -1,3 +1,4 @@
+import Food from "../models/foodModel.js"
 import * as repository from "../repositories/productsRepository.js"
 import * as error from "../utils/errors.js"
 
@@ -19,6 +20,11 @@ async function performanceNode(){
     return {timeOriginMs, memoryInfo}
 }
 
+async function callUpdateProductDb(code: string, product: Food){
+    const att = await repository.updateProduct(code, product)
+    if(att.modifiedCount === 0) throw error.notFound("product not found")
+}
+
 async function callUpdateDbStatus(code: string){
     const update = await repository.updateStatusToTrash(code)
     if(update.modifiedCount === 0) throw error.notFound("product not found")
@@ -34,6 +40,7 @@ export {
     verifyConnectionDb,
     lastUpdate,
     performanceNode,
+    callUpdateProductDb,
     callUpdateDbStatus,
     callGetProduct
 }
