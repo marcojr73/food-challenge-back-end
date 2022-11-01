@@ -10,6 +10,15 @@ async function apiDetails(req: Request, res: Response){
     res.send({connectionDb, lastUpate, performance})
 }
 
+async function productUpdate(req: Request, res: Response){
+    
+    const {code} = req.params
+    await services.callUpdateDbStatus(code)
+
+    res.status(200).send("success when updating product")
+}
+
 export {
-    apiDetails
+    apiDetails, 
+    productUpdate
 }

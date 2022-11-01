@@ -1,4 +1,4 @@
-function notFound(message){
+function notFound(message: string){
     return {
         status: 404,
         message
