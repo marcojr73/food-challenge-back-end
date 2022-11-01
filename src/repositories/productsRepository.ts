@@ -26,6 +26,11 @@ async function getProductByCode(code: string){
     return await db.collection("foods").findOne({code})
 }
 
+async function getAllProducts(page: number){
+    const db: Db = await connectDb()
+    return await db.collection("foods").find({}).skip(50 * page).limit(50).toArray()
+}
+
 
 
 export {
@@ -33,5 +38,6 @@ export {
     getLastTimeUpdateDb,
     updateProduct,
     updateStatusToTrash,
-    getProductByCode
+    getProductByCode,
+    getAllProducts
 }

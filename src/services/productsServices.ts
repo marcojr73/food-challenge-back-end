@@ -36,11 +36,18 @@ async function callGetProduct(code: string){
     return product
 }
 
+async function callGetAllProducts(page: number){
+    const products = await repository.getAllProducts(page)
+    if(products.length === 0) throw error.notFound("Not found products, wait for update")
+    return products
+}
+
 export {
     verifyConnectionDb,
     lastUpdate,
     performanceNode,
     callUpdateProductDb,
     callUpdateDbStatus,
-    callGetProduct
+    callGetProduct,
+    callGetAllProducts
 }
