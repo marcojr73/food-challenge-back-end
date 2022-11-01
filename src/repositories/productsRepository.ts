@@ -9,7 +9,13 @@ async function getLastTimeUpdateDb(){
     return await db.collection("foods").findOne({})
 }
 
+async function updateStatusToTrash(code: string){
+    const db = await connectDb()
+    return await db.collection("foods").updateOne({code}, {$set: {status: "trash"}})
+}
+
 export {
     connectToDb,
-    getLastTimeUpdateDb
+    getLastTimeUpdateDb,
+    updateStatusToTrash
 }

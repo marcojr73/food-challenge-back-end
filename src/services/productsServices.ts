@@ -19,8 +19,14 @@ async function performanceNode(){
     return {timeOriginMs, memoryInfo}
 }
 
+async function callUpdateDbStatus(code: string){
+    const update = await repository.updateStatusToTrash(code)
+    if(update.modifiedCount === 0) throw error.notFound("product not found")
+}
+
 export {
     verifyConnectionDb,
     lastUpdate,
-    performanceNode
+    performanceNode,
+    callUpdateDbStatus
 }

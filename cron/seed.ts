@@ -67,7 +67,7 @@ async function convertoToObjJs(fileName: string) {
             const ans = JSON.parse(line)
             const food = new Food(
                 ans.code, 
-                "trash", 
+                "published", 
                 date, 
                 ans.url, 
                 ans.creator, 
