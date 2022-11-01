@@ -24,9 +24,16 @@ async function callUpdateDbStatus(code: string){
     if(update.modifiedCount === 0) throw error.notFound("product not found")
 }
 
+async function callGetProduct(code: string){
+    const product = await repository.getProductByCode(code)
+    if(!product) throw error.notFound("product not found")
+    return product
+}
+
 export {
     verifyConnectionDb,
     lastUpdate,
     performanceNode,
-    callUpdateDbStatus
+    callUpdateDbStatus,
+    callGetProduct
 }
