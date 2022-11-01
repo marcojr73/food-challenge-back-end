@@ -5,17 +5,15 @@ import fs from "fs"
 import https from "https"
 import gunzip from "gunzip-file"
 import lineReader from "line-reader"
-import Food from "../models/foodModel.js"
-import connectDb from "./dataBase.js"
+import Food from "../src/models/foodModel.js"
+import connectDb from "../src/config/dataBase.js"
 
 dotenv.config()
 
-setInterval(() => {
-	const hour = dayjs().hour()
-	if (hour === 3) deleteCollection(), getFilesNames()
-}, 3540000)
-
-deleteCollection(), getFilesNames()
+export default function seed() {
+    console.log("seed is running...")
+    deleteCollection(), getFilesNames()
+}
 
 async function getFilesNames() {
 	try {
@@ -35,17 +33,20 @@ async function getFilesNames() {
 
 function downloadFiles(url: string, fileName: string) {
     console.log("downloading...")
-    https.get(url, (res) => {
-        const path = `downloads/zip/${fileName}`
-        const filePath = fs.createWriteStream(path)
-        res.pipe(filePath)
-        filePath.on("finish", () => {
-            filePath.close()
-            console.log("Download Completed!")
-            extractGzFiles(fileName)
+    try {
+        https.get(url, (res) => {
+            const path = `downloads/zip/${fileName}`
+            const filePath = fs.createWriteStream(path)
+            res.pipe(filePath)
+            filePath.on("finish", () => {
+                filePath.close()
+                console.log("Download Completed!")
+                extractGzFiles(fileName)
+            })
         })
-    })
-    console.log("Update completed")
+    } catch (e) {
+        console.error(e)
+    }
 }
 
 function extractGzFiles(fileName: string) {
@@ -59,7 +60,7 @@ function extractGzFiles(fileName: string) {
 async function convertoToObjJs(fileName: string) {
 
     let cont = 0
-    const date = dayjs()
+    const date = dayjs().format()
 
     await lineReader.eachLine(`downloads/unzip/${fileName}.json`, function(line: string) {
         if(cont < 99){
