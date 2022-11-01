@@ -8,5 +8,6 @@ productsRouter.get("/", controller.apiDetails)
 productsRouter.put("/products/:code", validateDataProduct, controller.updateProduct)
 productsRouter.delete("/products/:code", controller.toTrashProduct)
 productsRouter.get("/products/:code", controller.getProductInfo)
+productsRouter.get("/products", controller.getAllProducts)
 
 export default productsRouter

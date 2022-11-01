@@ -36,9 +36,18 @@ async function getProductInfo(req: Request, res: Response){
     res.status(200).send({product})
 }
 
+async function getAllProducts(req: Request, res: Response){
+
+    const page = +req.query.page
+    const products = await services.callGetAllProducts(page)
+
+    res.status(200).send(products)
+}
+
 export {
     apiDetails, 
     updateProduct,
     toTrashProduct,
-    getProductInfo
+    getProductInfo,
+    getAllProducts
 }
