@@ -1,7 +1,7 @@
 export default class Food {
-    code: number
+    code: string
     status: string
-    imported_t: Date
+    imported_t: string
     url: string
     creator: string
     created_t: string
@@ -17,13 +17,17 @@ export default class Food {
     ingredients_text: string
     traces: string
     serving_size: string
-    serving_quantity: number
-    nutriscore_score: number
+    serving_quantity: string
+    nutriscore_score: string
     nutriscore_grade: string
     main_category: string
     image_url: string
 
-    constructor(code, status, imported_t, url, creator, created_t, last_modified_t, product_name, quantity, brands, categories, labels, cities, purchase_places, stores, ingredients_text, traces, serving_size, serving_quantity, nutriscore_score, nutriscore_grade, main_category, image_url) {
+    
+    
+    
+    
+    constructor(code: string, status: string, imported_t: string, url: string, creator: string, created_t: string, last_modified_t: string, product_name: string, quantity: string, brands: string, categories: string, labels: string, cities: string, purchase_places: string, stores: string, ingredients_text: string, traces: string, serving_size: string, serving_quantity: string, nutriscore_score: string, nutriscore_grade: string, main_category: string, image_url: string) {
         this.code = code,
         this.status = status,
         this.imported_t = imported_t,

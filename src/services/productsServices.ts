@@ -1,5 +1,5 @@
 import Food from "../models/foodModel.js"
-import * as repository from "../repositories/productsRepository.js"
+import {repository} from "../repositories/productsRepository.js"
 import * as error from "../utils/errors.js"
 
 async function verifyConnectionDb(){
@@ -42,7 +42,7 @@ async function callGetAllProducts(page: number){
     return products
 }
 
-export {
+export const service = {
     verifyConnectionDb,
     lastUpdate,
     performanceNode,
