@@ -25,7 +25,7 @@ async function toTrashProduct(req: Request, res: Response){
     const {code} = req.params
     await service.callUpdateDbStatus(code)
 
-    res.status(200).send("success when to trash product")
+    res.status(204).send("success when to trash product")
 }
 
 async function getProductInfo(req: Request, res: Response){
