@@ -1,12 +1,12 @@
 import { Request, Response } from "express"
 import Food from "../models/foodModel.js"
-import * as services from "../services/productsServices.js"
+import {service} from "../services/productsServices.js"
 
 async function apiDetails(req: Request, res: Response){
 
-    const connectionDb = await services.verifyConnectionDb()
-    const lastUpate = await services.lastUpdate()
-    const performance = await services.performanceNode()
+    const connectionDb = await service.verifyConnectionDb()
+    const lastUpate = await service.lastUpdate()
+    const performance = await service.performanceNode()
 
     res.send({connectionDb, lastUpate, performance})
 }
@@ -15,7 +15,7 @@ async function updateProduct(req: Request, res: Response){
     
     const {code} = req.params
     const updatedVersion: Food = req.body
-    await services.callUpdateProductDb(code, updatedVersion)
+    await service.callUpdateProductDb(code, updatedVersion)
 
     res.status(200).send("success when to update product")
 }
@@ -23,7 +23,7 @@ async function updateProduct(req: Request, res: Response){
 async function toTrashProduct(req: Request, res: Response){
 
     const {code} = req.params
-    await services.callUpdateDbStatus(code)
+    await service.callUpdateDbStatus(code)
 
     res.status(200).send("success when to trash product")
 }
@@ -31,7 +31,7 @@ async function toTrashProduct(req: Request, res: Response){
 async function getProductInfo(req: Request, res: Response){
 
     const {code} = req.params
-    const product = await services.callGetProduct(code)
+    const product = await service.callGetProduct(code)
 
     res.status(200).send({product})
 }
@@ -39,7 +39,7 @@ async function getProductInfo(req: Request, res: Response){
 async function getAllProducts(req: Request, res: Response){
 
     const page = +req.query.page
-    const products = await services.callGetAllProducts(page)
+    const products = await service.callGetAllProducts(page)
 
     res.status(200).send(products)
 }

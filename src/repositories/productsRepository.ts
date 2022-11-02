@@ -33,7 +33,7 @@ async function getAllProducts(page: number){
 
 
 
-export {
+export const repository = {
     connectToDb,
     getLastTimeUpdateDb,
     updateProduct,
