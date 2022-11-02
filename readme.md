@@ -9,7 +9,7 @@
 
 - A atualização de dados ocorre todo dia as 3:30 da manhã
 
-- [Veja meu deploy na Heroku desta API aqui](https://geo-quiz-api.herokuapp.com)
+- [Veja meu deploy na Heroku desta API aqui](https://foodmanager-challenge.herokuapp.com/)
 
 
 
