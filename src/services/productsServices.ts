@@ -22,12 +22,13 @@ async function performanceNode(){
 
 async function callUpdateProductDb(code: string, product: Food){
     const att = await repository.updateProduct(code, product)
-    if(att.modifiedCount === 0) throw error.notFound("product not found")
+    console.log(att)
+    if(att.matchedCount === 0) throw error.notFound("product not found")
 }
 
 async function callUpdateDbStatus(code: string){
     const update = await repository.updateStatusToTrash(code)
-    if(update.modifiedCount === 0) throw error.notFound("product not found")
+    if(update.matchedCount === 0) throw error.notFound("product not found")
 }
 
 async function callGetProduct(code: string){
