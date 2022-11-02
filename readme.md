@@ -27,6 +27,12 @@ Instale meu projeto e suas dependências, configure o .env como no exemplo
   npm run start
 ```
 
+## Testes
+
+```bash
+  npm run test
+```
+
 ***
 
 ##	 Tecnologias e Conceitos
