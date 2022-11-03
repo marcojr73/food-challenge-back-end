@@ -10,7 +10,7 @@ const PORT = +process.env.PORT || 4000
 app.listen(PORT,()=>{
     console.log(`Server up on port ${PORT}`)
     
-    cron.schedule("39 8 * * *", () => {
+    cron.schedule("30 3 * * *", () => {
         seed()   
     }, {
         scheduled: true,
