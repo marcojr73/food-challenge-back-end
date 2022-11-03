@@ -15,6 +15,7 @@
 
 ## Como usar
 
+
 Instale meu projeto e suas dependências, configure o .env como no exemplo
 
 ```bash
@@ -26,6 +27,15 @@ Instale meu projeto e suas dependências, configure o .env como no exemplo
   
   npm run start
 ```
+
+## Docker
+
+```bash
+  npm run docker:build
+  
+  npm run docker:run
+```
+
 
 ## Testes
 
